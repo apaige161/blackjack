@@ -1,0 +1,12 @@
+/Users/alexpaige/Projects/blackjack/blackjack/bin/Debug/netcoreapp3.1/blackjack.deps.json
+/Users/alexpaige/Projects/blackjack/blackjack/bin/Debug/netcoreapp3.1/blackjack.runtimeconfig.json
+/Users/alexpaige/Projects/blackjack/blackjack/bin/Debug/netcoreapp3.1/blackjack.runtimeconfig.dev.json
+/Users/alexpaige/Projects/blackjack/blackjack/bin/Debug/netcoreapp3.1/blackjack.dll
+/Users/alexpaige/Projects/blackjack/blackjack/bin/Debug/netcoreapp3.1/blackjack.pdb
+/Users/alexpaige/Projects/blackjack/blackjack/obj/Debug/netcoreapp3.1/blackjack.csprojAssemblyReference.cache
+/Users/alexpaige/Projects/blackjack/blackjack/obj/Debug/netcoreapp3.1/blackjack.csproj.CoreCompileInputs.cache
+/Users/alexpaige/Projects/blackjack/blackjack/obj/Debug/netcoreapp3.1/blackjack.AssemblyInfoInputs.cache
+/Users/alexpaige/Projects/blackjack/blackjack/obj/Debug/netcoreapp3.1/blackjack.AssemblyInfo.cs
+/Users/alexpaige/Projects/blackjack/blackjack/obj/Debug/netcoreapp3.1/blackjack.dll
+/Users/alexpaige/Projects/blackjack/blackjack/obj/Debug/netcoreapp3.1/blackjack.pdb
+/Users/alexpaige/Projects/blackjack/blackjack/obj/Debug/netcoreapp3.1/blackjack.genruntimeconfig.cache
