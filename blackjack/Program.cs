@@ -26,6 +26,7 @@ namespace blackjack
             Console.WriteLine("blackjack and the dice game is currently working but ready for improvements");
             Console.WriteLine("\n");
 
+            //add a system exception error handler for Console.ReadLine(), validate string
             Console.WriteLine("Are you ready for a game of blackjack or dice?, Enter BLACKJACK or DICE");
             string play = Console.ReadLine().ToLower();
             Console.WriteLine("\n");
@@ -207,7 +208,7 @@ namespace blackjack
 
                 //add a dealer
                 //then compare values between player and dealer, dealer wins on a tie
-                //put Card.NewCard() in a variable and display dealer cards
+                //put Card.NewCard()?? [currently being created in main args] in a variable and display dealer cards
 
                 int dealerCards = Card.NewCard() + Card.NewCard();
                 Console.WriteLine($"dealer card value: {dealerCards}");
@@ -316,11 +317,9 @@ namespace blackjack
             }
 
             //add a system exception error handler for Console.ReadLine(), validate string
-
-            Console.WriteLine("The objective is to roll a higher number than your opponent");
-
             while (play == "dice")
             {
+                Console.WriteLine("The objective is to roll a higher number than your opponent");
                 Console.WriteLine("\n");
                 //place a bet
                 Console.WriteLine("How much would you like to wager?, must be an integer");
@@ -371,27 +370,8 @@ namespace blackjack
                     }
                 }
                 
-            }//end of game loop
+            }//end of dice game loop
 
-
-            /*
-            if(playerWon == true)
-            {
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("");
-                Console.WriteLine("        \"                      /    ");
-                Console.WriteLine("         \"                    /     ");
-                Console.WriteLine("          \"                  /      ");
-                Console.WriteLine("           \"                /       ");
-                Console.WriteLine("            \"      /\"      /        ");
-                Console.WriteLine("             \"    /  \"    /         ");
-                Console.WriteLine("              \"  /    \"  /          ");
-                Console.WriteLine("               \"/      \"/           ");
-            }
-            */
         }
 
     }
