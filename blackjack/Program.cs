@@ -5,6 +5,11 @@ namespace blackjack
     class Program
     {
 
+        //GIT ISSUES ~/Projects/blackjack AP$ git remote add origin https://github.com/apaige161/blackjack.git
+        //GIT ISSUES fatal: remote origin already exists.
+
+
+
         //As of now I get a random card from 2 to 11 and randomly assigns a suit, no face cards
 
         /*What will i need?
@@ -262,6 +267,7 @@ namespace blackjack
                         keepGoing = Console.ReadLine().ToLower();
                         Console.WriteLine("\n");
                     }
+                    //player loss
                     else
                     {
                         Console.WriteLine("Dealer wins");
@@ -279,8 +285,11 @@ namespace blackjack
                     keepGoing = Console.ReadLine().ToLower();
                     Console.WriteLine("\n");
                 }
+            //end of game loop
             }
 
+            Console.WriteLine("roll the dice!");
+            Console.WriteLine($"{Dice.NewDie()} and {Dice.NewDie()}");
 
 
             /*
