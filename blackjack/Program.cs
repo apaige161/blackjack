@@ -24,10 +24,14 @@ namespace blackjack
         static void Main(string[] args)
         {
             Console.WriteLine("blackjack and the dice game is currently working but ready for improvements");
+            Console.WriteLine("\n");
 
             Console.WriteLine("Are you ready for a game of blackjack or dice?, Enter BLACKJACK or DICE");
             string play = Console.ReadLine().ToLower();
             Console.WriteLine("\n");
+
+            int playerScore = 100;
+            Console.WriteLine($"You currently have {playerScore} to bet");
 
 
             //bool playerWon = false;
@@ -51,9 +55,28 @@ namespace blackjack
             //main blackjack loop 
             while(play == "blackjack")
             {
+                //place a bet
+                Console.WriteLine("How much would you like to wager?, must be an integer");
+                Console.WriteLine($"You have {playerScore} to wager");
+                string wagerStr = Console.ReadLine();
+                int wager = Convert.ToInt32(wagerStr);
+
+                //if player is out of money break out of program
+                if (wager > playerScore)
+                {
+                    Console.WriteLine("You do not have that much to gamble. End of game");
+                    break;
+                }
+
+                if (playerScore <= 0)
+                {
+                    Console.WriteLine("You are out of money come back another time");
+                    break;
+                }
+
                 //allows a player to "hit" and gives total
                 //needs to improve user option to add card (method)?? need to DRY
-                    //if the player choses to play again the same cards are given
+                //if the player choses to play again the same cards are given
                 int playerCards = listOfCards[0] + listOfCards[1];
                 Console.WriteLine($" {listOfCards[0]}: {listOfSuit[0]}, " +
                     $"{listOfCards[1]}: {listOfSuit[1]}");
@@ -237,7 +260,9 @@ namespace blackjack
                 if (playerCards > 21)
                 {
                     Console.WriteLine("player busted, you lose");
-                    Console.WriteLine("play another round? Yes or No");
+                    playerScore -= wager;
+                    Console.WriteLine($"You lost {wager}, you now have {playerScore}.");
+                    Console.WriteLine("play blackjack again? enter BLACKJACK");
                     play = Console.ReadLine().ToLower();
                     Console.WriteLine("\n");
                 }
@@ -246,7 +271,9 @@ namespace blackjack
                 else if (playerCards == 21 && dealerCards == 21)
                 {
                     Console.WriteLine("You tied, dealer wins");
-                    Console.WriteLine("play another round? Yes or No");
+                    playerScore -= wager;
+                    Console.WriteLine($"You lost {wager}, you now have {playerScore}.");
+                    Console.WriteLine("play blackjack again? enter BLACKJACK");
                     play = Console.ReadLine().ToLower();
                     Console.WriteLine("\n");
                 }
@@ -257,8 +284,9 @@ namespace blackjack
                     if (playerCards > dealerCards || dealerCards > 21)
                     {
                         Console.WriteLine("Player wins!");
-                        //playerWon = true;
-                        Console.WriteLine("play another round? Yes or No");
+                        playerScore += wager;
+                        Console.WriteLine($"You won {wager}, you now have {playerScore}.");
+                        Console.WriteLine("play blackjack again? enter BLACKJACK");
                         play = Console.ReadLine().ToLower();
                         Console.WriteLine("\n");
                     }
@@ -266,7 +294,9 @@ namespace blackjack
                     else
                     {
                         Console.WriteLine("Dealer wins");
-                        Console.WriteLine("play another round? Yes or No");
+                        playerScore -= wager;
+                        Console.WriteLine($"You lost {wager}, you now have {playerScore}.");
+                        Console.WriteLine("play blackjack again? enter BLACKJACK");
                         play = Console.ReadLine().ToLower();
                         Console.WriteLine("\n");
                     }
@@ -276,7 +306,9 @@ namespace blackjack
                 else
                 {
                     Console.WriteLine("Dealer wins");
-                    Console.WriteLine("play another round? Yes or No");
+                    playerScore -= wager;
+                    Console.WriteLine($"You lost {wager}, you now have {playerScore}.");
+                    Console.WriteLine("play blackjack again? enter BLACKJACK");
                     play = Console.ReadLine().ToLower();
                     Console.WriteLine("\n");
                 }
@@ -286,10 +318,6 @@ namespace blackjack
             //add a system exception error handler for Console.ReadLine(), validate string
 
             Console.WriteLine("The objective is to roll a higher number than your opponent");
-            //Console.WriteLine("Play dice?, yes or no");
-            //play = Console.ReadLine().ToLower();
-
-            int playerScore = 100;
 
             while (play == "dice")
             {
@@ -298,10 +326,9 @@ namespace blackjack
                 Console.WriteLine("How much would you like to wager?, must be an integer");
                 Console.WriteLine($"You have {playerScore} to wager");
                 string wagerStr = Console.ReadLine();
-
                 int wager = Convert.ToInt32(wagerStr);
-                //if player is out of money break out of program
 
+                //if player is out of money break out of program
                 if (wager > playerScore)
                 {
                     Console.WriteLine("You do not have that much to gamble. End of game");
@@ -329,9 +356,11 @@ namespace blackjack
                     {
                         playerScore -= wager;
                         Console.WriteLine($"You lost {wager}! You have {playerScore}");
+                        Console.WriteLine("Play dice?, yes or no");
+                        play = Console.ReadLine().ToLower();
                         if (playerScore <= 0)
                         {
-                            Console.WriteLine("You are our of money come back another time");
+                            Console.WriteLine("You are out of money come back another time");
                             break;
                         }
                     }
@@ -341,8 +370,7 @@ namespace blackjack
                         Console.WriteLine("It is a tie! try again");
                     }
                 }
-                Console.WriteLine("Play dice?, yes or no");
-                play = Console.ReadLine().ToLower();
+                
             }//end of game loop
 
 
