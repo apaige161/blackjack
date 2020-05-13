@@ -5,11 +5,6 @@ namespace blackjack
     class Program
     {
 
-        //GIT ISSUES ~/Projects/blackjack AP$ git remote add origin https://github.com/apaige161/blackjack.git
-        //GIT ISSUES fatal: remote origin already exists.
-
-
-
         //As of now I get a random card from 2 to 11 and randomly assigns a suit, no face cards
 
         /*What will i need?
@@ -28,10 +23,10 @@ namespace blackjack
 
         static void Main(string[] args)
         {
-            Console.WriteLine("blackjack is currently working but ready for improvements");
+            Console.WriteLine("blackjack and the dice game is currently working but ready for improvements");
 
-            Console.WriteLine("Are you ready for a game of blackjack?");
-            string keepGoing = Console.ReadLine().ToLower();
+            Console.WriteLine("Are you ready for a game of blackjack or dice?, Enter BLACKJACK or DICE");
+            string play = Console.ReadLine().ToLower();
             Console.WriteLine("\n");
 
 
@@ -54,7 +49,7 @@ namespace blackjack
                                   };
 
             //main blackjack loop 
-            while(keepGoing == "yes")
+            while(play == "blackjack")
             {
                 //allows a player to "hit" and gives total
                 //needs to improve user option to add card (method)?? need to DRY
@@ -243,7 +238,7 @@ namespace blackjack
                 {
                     Console.WriteLine("player busted, you lose");
                     Console.WriteLine("play another round? Yes or No");
-                    keepGoing = Console.ReadLine().ToLower();
+                    play = Console.ReadLine().ToLower();
                     Console.WriteLine("\n");
                 }
 
@@ -252,7 +247,7 @@ namespace blackjack
                 {
                     Console.WriteLine("You tied, dealer wins");
                     Console.WriteLine("play another round? Yes or No");
-                    keepGoing = Console.ReadLine().ToLower();
+                    play = Console.ReadLine().ToLower();
                     Console.WriteLine("\n");
                 }
 
@@ -264,7 +259,7 @@ namespace blackjack
                         Console.WriteLine("Player wins!");
                         //playerWon = true;
                         Console.WriteLine("play another round? Yes or No");
-                        keepGoing = Console.ReadLine().ToLower();
+                        play = Console.ReadLine().ToLower();
                         Console.WriteLine("\n");
                     }
                     //player loss
@@ -272,7 +267,7 @@ namespace blackjack
                     {
                         Console.WriteLine("Dealer wins");
                         Console.WriteLine("play another round? Yes or No");
-                        keepGoing = Console.ReadLine().ToLower();
+                        play = Console.ReadLine().ToLower();
                         Console.WriteLine("\n");
                     }
                 }
@@ -282,14 +277,73 @@ namespace blackjack
                 {
                     Console.WriteLine("Dealer wins");
                     Console.WriteLine("play another round? Yes or No");
-                    keepGoing = Console.ReadLine().ToLower();
+                    play = Console.ReadLine().ToLower();
                     Console.WriteLine("\n");
                 }
             //end of game loop
             }
 
-            Console.WriteLine("roll the dice!");
-            Console.WriteLine($"{Dice.NewDie()} and {Dice.NewDie()}");
+            //add a system exception error handler for Console.ReadLine(), validate string
+
+            Console.WriteLine("The objective is to roll a higher number than your opponent");
+            //Console.WriteLine("Play dice?, yes or no");
+            //play = Console.ReadLine().ToLower();
+
+            int playerScore = 100;
+
+            while (play == "dice")
+            {
+                Console.WriteLine("\n");
+                //place a bet
+                Console.WriteLine("How much would you like to wager?, must be an integer");
+                Console.WriteLine($"You have {playerScore} to wager");
+                string wagerStr = Console.ReadLine();
+
+                int wager = Convert.ToInt32(wagerStr);
+                //if player is out of money break out of program
+
+                if (wager > playerScore)
+                {
+                    Console.WriteLine("You do not have that much to gamble. End of game");
+                    break;
+                }
+                else if (wager <= playerScore)
+                {
+                    //player recieves 2 dice
+                    int playerTotal = Dice.NewDie() + Dice.NewDie();
+                    Console.WriteLine($"Your total is {playerTotal}");
+
+                    //computer recieves 2 dice
+                    int oppTotal = Dice.NewDie() + Dice.NewDie();
+                    Console.WriteLine($"Opponent total is {oppTotal}");
+                    Console.WriteLine("\n");
+
+                    //won
+                    if (playerTotal > oppTotal)
+                    {
+                        playerScore += wager;
+                        Console.WriteLine($"You won {wager}! You have {playerScore}");
+                    }
+                    //lost
+                    else if (playerTotal < oppTotal)
+                    {
+                        playerScore -= wager;
+                        Console.WriteLine($"You lost {wager}! You have {playerScore}");
+                        if (playerScore <= 0)
+                        {
+                            Console.WriteLine("You are our of money come back another time");
+                            break;
+                        }
+                    }
+                    //tie
+                    else
+                    {
+                        Console.WriteLine("It is a tie! try again");
+                    }
+                }
+                Console.WriteLine("Play dice?, yes or no");
+                play = Console.ReadLine().ToLower();
+            }//end of game loop
 
 
             /*
